@@ -1,7 +1,11 @@
-package java_core;
+package java_core_only;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.Map;
+import java.util.HashMap;
 
 public class oop {
     abstract static class User {
@@ -13,6 +17,7 @@ public class oop {
                     if(password == null || password.isEmpty()) {
                             throw new IllegalArgumentException("Password cannot be empty.");
                         }
+                
                     this.name = name;
                     this.email = email;
                     this.password = password;
@@ -57,14 +62,30 @@ public class oop {
                         cart.add(item);
                         System.out.println(item + " added to cart.");
                     }
+
+                    void viewCart() {
+                        System.out.println("Cart contents: " + cart);
+                    }
                 
                     void PlaceOrder(){
                         System.out.println(getName() + " placed an order.");
                     }
                 }
     static class Admin extends User{
+            Set<String> Registeredemails = new HashSet<>();
+            Map<Integer, String> UserDatabase = new HashMap<>();
+
+            void AddUser(int id, String email, String name) {
+                Registeredemails.add(email);
+                UserDatabase.put(id, name);
+                System.out.println("User added: " + name + " with email: " + email);
+            }
             Admin(String name, String email, String password) {
                 super(name, email, password);
+            }
+            void ViewUsers(){
+                System.out.println("User Database: " + UserDatabase);
+                System.out.println("Registered Emails: " + Registeredemails);
             }
             @Override
             void login() {
@@ -81,6 +102,10 @@ public class oop {
         }try{
             Admin a1 = new Admin("Admin", "admin@gmail.com", "admin123");
             a1.login();
+            a1.AddUser(1, "Akshat", "akshat@gmail.com");
+            a1.AddUser(2, "Rahul", "rahul@gmail.com");
+            a1.AddUser(3, "Sneha", "akshat@gmail.com"); // duplicate email!
+            a1.ViewUsers();
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
