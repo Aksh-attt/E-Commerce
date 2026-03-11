@@ -92,7 +92,24 @@ public class oop {
                 System.out.println("Admin login: Welcome, " + getName() + "!");
             }
     }
+    static <T> void printlist(List<T> list){
+        for(T item : list){
+            System.out.println(item);
+        }
+    }
     public static void main(String[] args) {
+        List<String> products = new ArrayList<>();
+        products.add("Laptop");
+        products.add("Phone");
+        products.add("Headphones");
+
+        List<Integer> prices = new ArrayList<>();
+        prices.add(55000);
+        prices.add(15000);
+        prices.add(2000);
+
+        printlist(products);
+        printlist(prices);
         try{
             Customer c1 = new Customer("Akshat", "akshat@gmail.com", "1234", "Noida");
             c1.login();
