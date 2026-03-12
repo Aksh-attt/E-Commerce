@@ -1,8 +1,7 @@
-package java_core_only;
+package java_core_only.src;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.Map;
 import java.util.HashMap;
@@ -102,6 +101,10 @@ public class oop {
         products.add("Laptop");
         products.add("Phone");
         products.add("Headphones");
+        
+        products.stream().filter(p-> p.startsWith("L")).forEach(System.out::println);
+        products.stream().map(p-> p.toUpperCase()).forEach(p-> System.out.println(p));
+        products.stream().sorted().forEach(System.out::println);
 
         List<Integer> prices = new ArrayList<>();
         prices.add(55000);
